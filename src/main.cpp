@@ -1,8 +1,8 @@
 // ********************--- Working Button Code ---***************************
 #include <Arduino.h>
 
-int btns_row[] = {6, 7};
-int btns_col[] = {4, 5};
+int btns_row[] = {4, 5, 6};
+int btns_col[] = {7, 8};
 // 2x2 array of floats, each element is a button last action time
 
 byte btns_state = 0b00000000; // 8 bits, each bit is a button state
@@ -19,7 +19,7 @@ byte btns_state = 0b00000000; // 8 bits, each bit is a button state
 //
 void setup() {
   // put your setup code here, to run once:
-  for (int i = 0; i < 2; i++) {
+  for (int i = 0; i < 3; i++) {
     pinMode(btns_row[i], OUTPUT); // meaning of OUTPUT is LOW
     digitalWrite(btns_row[i], HIGH);
   }
@@ -31,7 +31,7 @@ void setup() {
 
 void loop() {
   btns_state = 0b00000000; // reset btns_state
-  for (int i = 0; i < 2; i++) {
+  for (int i = 0; i < 3; i++) {
     digitalWrite(btns_row[i], LOW);
     for (int j = 0; j < 2; j++) {
       if (digitalRead(btns_col[j]) == LOW) {
